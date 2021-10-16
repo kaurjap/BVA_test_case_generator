@@ -63,13 +63,12 @@ public class Variable {
      *                                 1    Robustness testing    
      *
     */
-
     public void setTestValues (int test_choice) {
         if (test_choice == 0) {
             // BVA testing
             test_values.add (this.min ());
             test_values.add (this.min_plus ());
-            test_values.add (this.max_minus() ());
+            test_values.add (this.max_minus ());
             test_values.add (this.max ());
 
         } else if (test_choice == 1) {
@@ -77,11 +76,16 @@ public class Variable {
             test_values.add (this.min_minus ());
             test_values.add (this.min ());
             test_values.add (this.min_plus ());
-            test_values.add (this.max_minus() ());
+            test_values.add (this.max_minus ());
             test_values.add (this.max ());
             test_values.add (this.max_plus ());
 
         } // end if-else
     } // end method setTestValues ()
+
+
+    public int get_test_value_at (int index) {
+        return this.test_values.get (index);
+    } // end get_test_value_at
 
 } // end class definition for Variable

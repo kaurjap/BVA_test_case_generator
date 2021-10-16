@@ -22,25 +22,33 @@ public class Main {
         Main program = new Main ();
 
         // ask for user's testing choice
-        int test_choice = program.ask_test_choice ();
-        // ask for number of variables
-        int n = program.ask_num_variables ();
-        
-        // ask for the range of variables
-        for (int i = 0; i < n; i++) {
-            System.out.println ("Please enter the range for variable " + i + ": ");
-            System.out.println ("Min value: ");
-            int min = program.get_integer_input();
-            System.out.println ("Max value: ");
-            int max = program.get_integer_input();
-            
-            // create a variable with these properties
-            Variable var = new Variable (min, max);
-            var.setTestValues (test_choice);
-            program.vars.add (var);
-        } // end for
+        int test_choice = -1;
 
-        program.generate_test_cases (test_choice, n);
+        // as long as the user does not quit, the following runs
+        while (test_choice != 2) {
+            test_choice = program.ask_test_choice ();
+        
+            if (test_choice != 2) {
+                // ask for number of variables
+                int n = program.ask_num_variables ();
+
+                // ask for the range of variables
+                for (int i = 0; i < n; i++) {
+                    System.out.println ("Please enter the range for variable " + i + ": ");
+                    System.out.println ("Min value: ");
+                    int min = program.get_integer_input();
+                    System.out.println ("Max value: ");
+                    int max = program.get_integer_input();
+                    
+                    // create a variable with these properties
+                    Variable var = new Variable (min, max);
+                    var.setTestValues (test_choice);
+                    program.vars.add (var);
+                } // end for
+
+                program.generate_test_cases (test_choice, n);
+            } // end if
+        } // end while
 
     } // end main
 

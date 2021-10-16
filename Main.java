@@ -105,6 +105,12 @@ public class Main {
     } // end print
 
 
+    /**
+     * This method provides the implementation of the BVA and robustness testing algorithms that generate the test cases.
+     * 
+     * @param test_choice
+     * @param n
+     */
     public void generate_test_cases (int test_choice, int n) {
         System.out.println ("--------- Test Cases -----------");
 

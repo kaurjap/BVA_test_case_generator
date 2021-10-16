@@ -43,7 +43,7 @@ public class Variable {
     }
 
     public int nominal () {
-        return (int) (this.max - this.min) / 2;       // DOUBT: what if this is a decimal?
+        return (int) (this.min + (this.max - this.min) / 2);       // DOUBT: what if this is a decimal?
     }
 
     public int max_minus () {

@@ -42,14 +42,21 @@ public class Main {
 
 
         int boundary_value_index = 0;
+        int counter = 0;
         for (int i = 0; i < 4*n + 1; i++) {
             // i(th) variable here is the one that changes in each iteration
             ArrayList <Integer> test_case = new ArrayList <Integer> ();
-            if (i != 0 && i != 4*n) {
-                if (i % 4 == 1) {
+            if (i != 0 && i < 4*n) {
+                if (i % 4 == 0) {
                     boundary_value_index = boundary_value_index + 1;
+                    counter = 0;
                 } // end if
             } // end if
+
+            if (i == 4*n) {
+                // reset boundary variable value
+                boundary_value_index = -1;
+            }
 
             // now that we know the variable index that uses a boundary value
             // just add all the nominals first, and then add the boundary value at the index known
@@ -61,7 +68,8 @@ public class Main {
                 } else if (j == boundary_value_index) {
                     // this variable uses one of its boundary values i.e. min, min+, max-, max
                     // that boundary value gets added to the test_case array at position i because it is the i'th variable
-                    test_case.add (vars.get (j).get_test_value_at (boundary_value_index));
+                    test_case.add (vars.get (j).get_test_value_at (counter));
+                    counter ++;
                 } // end if-else
             } // end inner for
 
@@ -89,7 +97,7 @@ public class Main {
         while (keepgoing) {
             System.out.println ("Please choose the type of testing: \n(0) Boundary Value Testing \n(1) Robustness Testing \n(2) QUIT");
             choice = this.get_integer_input ();
-            if (choice != 0 || choice != 1 || choice != 2) {
+            if (choice != 0 && choice != 1 && choice != 2) {
                 System.out.println ("Please enter a valid input.");
             } else {
                 keepgoing = false;

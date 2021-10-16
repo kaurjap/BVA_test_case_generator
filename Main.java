@@ -42,13 +42,15 @@ public class Main {
 
 
         int boundary_value_index = 0;
-        for (int i = 0; i < 4*n; i++) {
+        for (int i = 0; i < 4*n + 1; i++) {
             // i(th) variable here is the one that changes in each iteration
             ArrayList <Integer> test_case = new ArrayList <Integer> ();
-            if (i != 0 && i % 3 == 1) {
-                boundary_value_index = boundary_value_index + 1;
+            if (i != 0 && i != 4*n) {
+                if (i % 4 == 1) {
+                    boundary_value_index = boundary_value_index + 1;
+                } // end if
             } // end if
-            
+
             // now that we know the variable index that uses a boundary value
             // just add all the nominals first, and then add the boundary value at the index known
             for (int j = 0; j < n; j++) {
@@ -72,29 +74,6 @@ public class Main {
 
         } // end inner for
 
-
-
-        // output the test cases using standard output
-        for (int i = 0; i < n; i++) {
-            // i(th) variable here is also the one that changes in each iteration
-            //String test_case = "";
-            
-            for (int j = 0; j < n; j++) {
-                if (j == i) {
-                    // j(th) variable's value is the one changing
-                    // meaning, for each test case, change j'th input value
-                    for (int k = 0; k < 4; k++) {
-                        
-                    } // end for
-                }
-            } // end inner for
-
-        } // end for
-
-
-
-
-
     } // end main
 
 
@@ -103,13 +82,7 @@ public class Main {
         // do nothing
     } 
 
-    /**
-     * method that asks the user for the type of testing to perform
-     * @return 
-     *      0   int    Boundary Value Testing
-     *      1   int    Robustness Testing
-     *      2   int    QUIT
-     */
+
     public int ask_test_choice () {
         int choice = -1;
         boolean keepgoing = true;
@@ -153,5 +126,14 @@ public class Main {
         } // end try-catch
         return val;
     } // end method get_integer_input ()
+
+
+    public void print (ArrayList <Integer> test_case) {
+        String output_string = "";
+        for (int k = 0; k < test_case.size (); k++) {
+            output_string += test_case.get (k) + " ";
+        } // end for
+        System.out.println (output_string);
+    } // end print
 
 } // end class Main

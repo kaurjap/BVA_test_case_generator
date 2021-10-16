@@ -1,4 +1,0 @@
-Please choose the type of testing: 
-(0) Boundary Value Testing 
-(1) Robustness Testing 
-(2) QUIT

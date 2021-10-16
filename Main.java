@@ -120,7 +120,7 @@ public class Main {
      * @param n
      */
     public void generate_test_cases (int test_choice, int n) {
-        System.out.println ("--------- Test Cases -----------");
+        System.out.println ("-------------------- Test Cases -------------------");
 
         int factor = 0;
         if (test_choice == 0) {
@@ -165,6 +165,7 @@ public class Main {
 
             print (test_case);
         } // end for
+        System.out.println(" -------------------------------------------- ");
     } // end 
 
 } // end class Main
